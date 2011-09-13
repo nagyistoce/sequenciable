@@ -1,0 +1,1 @@
+IplImage* homomorphic_filter( IplImage* source, int filter_order, int cut_frequency, int gain, int filter_type);
