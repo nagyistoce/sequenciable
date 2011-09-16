@@ -5,25 +5,25 @@
  *      Author: claudio
  */
 
-#ifndef HOMOMORPHICFILTERHSV_H_
-#define HOMOMORPHICFILTERHSV_H_
+#ifndef HOMOMORPHICFILTERLAB_H_
+#define HOMOMORPHICFILTERLAB_H_
 
 #include "HomomorphicFilter.h"
-#include "HSVListener.h"
+#include "LABListener.h"
 //#include "HSVGenerator.h"
 #include "IplEvent.h"
 #include <Sequenciable.h>
 #include <ShortCircuitException.h>
 
-class HomomorphicFilterHSV : public HomomorphicFilter, public HSVListener, public Sequenciable {
+class HomomorphicFilterLAB : public HomomorphicFilter, public LABListener, public Sequenciable {
 public:
-    HomomorphicFilterHSV(int filterOrder = 1, int cutFrequency = 100, int gain = 1, int filterType = -1);
-    virtual ~HomomorphicFilterHSV();
+    HomomorphicFilterLAB(int filterOrder = 1, int cutFrequency = 100, int gain = 1, int filterType = -1);
+    virtual ~HomomorphicFilterLAB();
     virtual void actionPerformed(Event* e);
     virtual void processingCore();
 
     virtual bool verifyOutputCompatibility(Sequenciable *lis) {
-        return dynamic_cast<HSVListener*> (lis);
+        return dynamic_cast<LABListener*> (lis);
     };
 
     virtual bool addSequenciableListener(Sequenciable *_hsvlis) {

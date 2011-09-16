@@ -9,11 +9,17 @@
 
 LABtoRGBTransform::LABtoRGBTransform() {
 	// TODO Auto-generated constructor stub
-
+    processed = false;
 }
 
 LABtoRGBTransform::~LABtoRGBTransform() {
 	// TODO Auto-generated destructor stub
+    if(processed){
+        cvReleaseImage(&input);
+        cvReleaseImage(&output);
+    }
+
+
 }
 
 void LABtoRGBTransform::actionPerformed(Event* ev) {

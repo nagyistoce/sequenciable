@@ -11,10 +11,16 @@ RGBtoHSVTransform::RGBtoHSVTransform() {
 	// TODO Auto-generated constructor stub
 //	setOutputType(Serializable::IPL_HSV);
 //	addInputType(Serializable::IPL_RGB);
+    processed = false;
 }
 
 RGBtoHSVTransform::~RGBtoHSVTransform() {
 	// TODO Auto-generated destructor stub
+        if(processed){
+        cvReleaseImage(&input);
+        cvReleaseImage(&output);
+    }
+
 }
 void RGBtoHSVTransform::processingCore(){
 //	if(inputImageSet){
