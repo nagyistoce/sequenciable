@@ -29,6 +29,8 @@ SmoothFilter::~SmoothFilter() {
 		cvReleaseImage(&input);
 	if(processed)
 		cvReleaseImage(&output);
+        inputImageSet = false;
+        processed = false;
 }
 void SmoothFilter::processingCore(){
 //	if(inputImageSet){

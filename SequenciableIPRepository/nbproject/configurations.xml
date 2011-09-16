@@ -28,6 +28,8 @@
         <itemPath>HomomorphicFilter.h</itemPath>
         <itemPath>HomomorphicFilterHSV.cpp</itemPath>
         <itemPath>HomomorphicFilterHSV.h</itemPath>
+        <itemPath>HomomorphicFilterLAB.cpp</itemPath>
+        <itemPath>HomomorphicFilterLAB.h</itemPath>
         <itemPath>SmoothFilter.cpp</itemPath>
         <itemPath>homomorphic_opencv.cpp</itemPath>
         <itemPath>homomorphic_opencv.h</itemPath>
@@ -98,6 +100,24 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+    </conf>
+    <conf name="DebugLinux" type="3">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>/usr/local/include/opencv</pElem>
+            <pElem>/usr/local/include</pElem>
+            <pElem>/home/claudio/NetBeansProjects/Sequenciables/Sequenciables</pElem>
+          </incDir>
+        </ccTool>
         <archiverTool>
         </archiverTool>
       </compileType>

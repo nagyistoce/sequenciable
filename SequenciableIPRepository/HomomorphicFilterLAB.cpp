@@ -5,10 +5,10 @@
  *      Author: claudio
  */
 
-#include "HomomorphicFilterHSV.h"
+#include "HomomorphicFilterLAB.h"
 #include <highgui.h>
 
-HomomorphicFilterHSV::HomomorphicFilterHSV(int _filterOrder, int _cutFrequency, int _gain, int _filterType) {
+HomomorphicFilterLAB::HomomorphicFilterLAB(int _filterOrder, int _cutFrequency, int _gain, int _filterType) {
     // TODO Auto-generated constructor stub
     filterOrder = _filterOrder;
     cutFrequency = _cutFrequency;
@@ -17,7 +17,7 @@ HomomorphicFilterHSV::HomomorphicFilterHSV(int _filterOrder, int _cutFrequency, 
     processed = false;
 }
 
-HomomorphicFilterHSV::~HomomorphicFilterHSV() {
+HomomorphicFilterLAB::~HomomorphicFilterLAB() {
     // TODO Auto-generated destructor stub
     if (processed) {
         cvReleaseImage(&input);
@@ -26,7 +26,7 @@ HomomorphicFilterHSV::~HomomorphicFilterHSV() {
     processed = false;
 }
 
-void HomomorphicFilterHSV::processingCore() {
+void HomomorphicFilterLAB::processingCore() {
     cvCopy(input, output);
 
     IplImage *inputA = cvCreateImage(cvGetSize(output), IPL_DEPTH_8U, 1);
@@ -40,7 +40,7 @@ void HomomorphicFilterHSV::processingCore() {
     cvReleaseImage(&outputPre);
 }
 
-void HomomorphicFilterHSV::actionPerformed(Event* ev) {
+void HomomorphicFilterLAB::actionPerformed(Event* ev) {
     IplEvent *e = (IplEvent*) ev;
     input = cvCloneImage(e->getEventIplImage());
     output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
