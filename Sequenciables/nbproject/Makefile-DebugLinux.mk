@@ -22,7 +22,7 @@ AS=as
 
 # Macros
 CND_PLATFORM=GNU-Linux-x86
-CND_CONF=Release
+CND_CONF=DebugLinux
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
@@ -69,22 +69,22 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsequenciables.a: ${OBJECTFILES}
 ${OBJECTDIR}/Event.o: Event.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Event.o Event.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Event.o Event.cpp
 
 ${OBJECTDIR}/IncompatibleClassesException.o: IncompatibleClassesException.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/IncompatibleClassesException.o IncompatibleClassesException.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/IncompatibleClassesException.o IncompatibleClassesException.cpp
 
 ${OBJECTDIR}/ShortCircuitException.o: ShortCircuitException.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/ShortCircuitException.o ShortCircuitException.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/ShortCircuitException.o ShortCircuitException.cpp
 
 ${OBJECTDIR}/Sequenciable.o: Sequenciable.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Sequenciable.o Sequenciable.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Sequenciable.o Sequenciable.cpp
 
 # Subprojects
 .build-subprojects:
