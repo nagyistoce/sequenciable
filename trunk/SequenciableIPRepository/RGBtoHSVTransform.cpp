@@ -5,6 +5,8 @@
  *      Author: claudio
  */
 
+#include <opencv/highgui.h>
+
 #include "RGBtoHSVTransform.h"
 
 RGBtoHSVTransform::RGBtoHSVTransform() {
@@ -40,7 +42,10 @@ void RGBtoHSVTransform::actionPerformed(Event* ev){
 //	inputImageSet = true;
 	output = cvCreateImage(cvGetSize(input),input->depth,input->nChannels);
 	//processingCore();
+        //cvSaveImage("inputrgb.bmp",input);
+        
         	cvCvtColor(input,output,CV_BGR2HSV);
+        //cvSaveImage("outputhsv.bmp",output);
 	//IplEvent *newEvent = new IplEvent(output);
 	//notifyAll(newEvent);
             for (int a = 0; a < listeners.size(); a++) {
