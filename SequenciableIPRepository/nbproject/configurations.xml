@@ -54,6 +54,14 @@
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="HSVConversionTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>/home/claudio/NetBeansProjects/Sequenciables/SequenciableIPRepository/tests/newtestclass.cpp</itemPath>
+        <itemPath>/home/claudio/NetBeansProjects/Sequenciables/SequenciableIPRepository/tests/newtestclass.h</itemPath>
+        <itemPath>/home/claudio/NetBeansProjects/Sequenciables/SequenciableIPRepository/tests/newtestrunner.cpp</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -81,6 +89,21 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
     </conf>
     <conf name="Release" type="3">
       <toolsSet>
@@ -103,6 +126,21 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
     </conf>
     <conf name="DebugLinux" type="3">
       <toolsSet>
@@ -121,6 +159,33 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>/home/claudio/NetBeansProjects/Sequenciables/Sequenciables</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerAddLib>
+            <pElem>../Sequenciables/dist/DebugLinux/GNU-Linux-x86</pElem>
+            <pElem>/usr/local/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibStdlibItem>CppUnit</linkerLibStdlibItem>
+            <linkerLibLibItem>cv</linkerLibLibItem>
+            <linkerLibLibItem>cxcore</linkerLibLibItem>
+            <linkerLibLibItem>highgui</linkerLibLibItem>
+            <linkerLibLibItem>sequenciables</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
     </conf>
   </confs>
 </configurationDescriptor>

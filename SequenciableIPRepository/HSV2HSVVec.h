@@ -34,10 +34,13 @@ public:
     };
     virtual std::vector<HSVColor> getOutputHSVColorVector();
 private:
+    void getVectorOfHSVfromHSVIplImage(IplImage *srcHSV, int type);
     std::vector<HSVColor> cores;
     int greyExclusionType;
     IplImage* input;
     bool processed;
+    static const int HSV_EXCLUDE_GRAYS=1;
+    static const int HSV_EXCLUDE_GRAYS_CAVALCANTI=2;
 };
 
 #endif /* HSV2HSVVEC_H_ */
