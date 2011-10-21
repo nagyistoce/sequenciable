@@ -10,7 +10,8 @@
 Sequenciable::Sequenciable() {
 }
 
-Sequenciable::Sequenciable(const Sequenciable& orig) {
+Sequenciable::Sequenciable(Sequenciable *orig) {
+    
 }
 
 Sequenciable::~Sequenciable() {

@@ -79,5 +79,19 @@
         </archiverTool>
       </compileType>
     </conf>
+    <conf name="ReleaseLinux" type="3">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <developmentMode>6</developmentMode>
+          <warningLevel>0</warningLevel>
+        </ccTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+    </conf>
   </confs>
 </configurationDescriptor>

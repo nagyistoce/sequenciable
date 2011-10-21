@@ -6,3 +6,4 @@
 # Debug configuration
 # Release configuration
 # DebugLinux configuration
+# ReleaseLinux configuration

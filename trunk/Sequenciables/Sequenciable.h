@@ -14,7 +14,7 @@
 class Sequenciable {
 public:
     Sequenciable();
-    Sequenciable(const Sequenciable& orig);
+    Sequenciable(Sequenciable* orig);
     virtual ~Sequenciable();
     //virtual bool verifyInputCompatibility(Sequenciable* s)=0;
     virtual bool verifyOutputCompatibility(Sequenciable *lis)=0;
