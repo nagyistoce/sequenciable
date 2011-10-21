@@ -23,6 +23,10 @@
                     <name>DebugLinux</name>
                     <type>3</type>
                 </confElem>
+                <confElem>
+                    <name>ReleaseLinux</name>
+                    <type>3</type>
+                </confElem>
             </confList>
         </data>
     </configuration>
