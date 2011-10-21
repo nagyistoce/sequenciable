@@ -5,16 +5,19 @@
  *      Author: claudio
  */
 
+#include <opencv/cxcore.h>
+
 #include "HSV2HSVVec.h"
 
 HSV2HSVVec::HSV2HSVVec(int _greyEclusion) {
     // TODO Auto-generated constructor stub
     greyExclusionType = _greyEclusion;
+    input = NULL;
 }
 
 HSV2HSVVec::~HSV2HSVVec() {
     // TODO Auto-generated destructor stub
-    if (processed) {
+    if (input!=NULL) {
         cvReleaseImage(&input);
     }
 }
@@ -90,6 +93,8 @@ void HSV2HSVVec::processingCore() {
 
 void HSV2HSVVec::actionPerformed(Event* ev) {
     IplEvent *e = (IplEvent*) ev;
+    if(input!=NULL)
+        cvReleaseImage(&input);
     input = cvCloneImage(e->getEventIplImage());
     //inputImageSet = true;
     //output = cvCreateImage(cvGetSize(input),input->depth,input->nChannels);

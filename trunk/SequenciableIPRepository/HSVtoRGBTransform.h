@@ -16,8 +16,9 @@
 #include <Sequenciable.h>
 //#include <HSVGenerator.h>
 #include <RGBListener.h>
+#include <HSVRGBTransformation.h>
 
-class HSVtoRGBTransform: public HSVListener, public Sequenciable {
+class HSVtoRGBTransform: public HSVListener, public Sequenciable, public HSVRGBTransformation {
 public:
 	HSVtoRGBTransform();
 	virtual ~HSVtoRGBTransform();
@@ -33,7 +34,15 @@ public:
 //                  return dynamic_cast<HSVGenerator*>(s);
 //              };
               virtual bool verifyOutputCompatibility(Sequenciable *lis){
-                  return dynamic_cast<RGBListener*>(lis);
+                  if(!dynamic_cast<RGBListener*>(lis)){
+                      return false;
+                  }else{
+                      if(dynamic_cast<HSVRGBTransformation*>(lis))
+                        return false;
+                      else
+                        return true;
+                  }
+
               };
 //	virtual void addRGBListener(RGBListener* _rgblis){
 ////		if(_rgblis==this)

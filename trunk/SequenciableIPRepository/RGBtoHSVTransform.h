@@ -15,8 +15,9 @@
 //#include <RGBGenerator.h>
 #include <HSVListener.h>
 #include <ShortCircuitException.h>
+#include <HSVRGBTransformation.h>
 
-class RGBtoHSVTransform: public RGBListener, public Sequenciable {
+class RGBtoHSVTransform: public RGBListener, public Sequenciable, public HSVRGBTransformation {
 public:
 	RGBtoHSVTransform();
 	virtual ~RGBtoHSVTransform();
@@ -26,7 +27,14 @@ public:
 //                  return dynamic_cast<RGBGenerator*>(s);
 //              };
               virtual bool verifyOutputCompatibility(Sequenciable *lis){
-                  return dynamic_cast<HSVListener*>(lis);
+                  if(!dynamic_cast<HSVListener*>(lis)){
+                      return false;
+                  }else{
+                      if(dynamic_cast<HSVRGBTransformation*>(lis))
+                        return false;
+                      else
+                        return true;
+                  }
               };
 //	virtual void addHSVListener(HSVListener* _hsvlis){
 ////			if(_hsvlis==this)

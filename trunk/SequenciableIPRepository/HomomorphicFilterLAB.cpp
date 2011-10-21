@@ -15,14 +15,17 @@ HomomorphicFilterLAB::HomomorphicFilterLAB(int _filterOrder, int _cutFrequency, 
     gain = _gain;
     filterType = _filterType;
     processed = false;
+    input = NULL;
+    output = NULL;
 }
 
 HomomorphicFilterLAB::~HomomorphicFilterLAB() {
     // TODO Auto-generated destructor stub
-    if (processed) {
+    if(input!=NULL)
         cvReleaseImage(&input);
+    if(output!=NULL)
         cvReleaseImage(&output);
-    }
+
     processed = false;
 }
 
@@ -42,6 +45,11 @@ void HomomorphicFilterLAB::processingCore() {
 
 void HomomorphicFilterLAB::actionPerformed(Event* ev) {
     IplEvent *e = (IplEvent*) ev;
+    if(input!=NULL)
+        cvReleaseImage(&input);
+    if(output!=NULL)
+        cvReleaseImage(&output);
+
     input = cvCloneImage(e->getEventIplImage());
     output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
     processingCore();

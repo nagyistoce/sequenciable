@@ -6,11 +6,13 @@
                    projectFiles="true">
       <itemPath>HSVColor.h</itemPath>
       <itemPath>HSVListener.h</itemPath>
+      <itemPath>/home/claudio/NetBeansProjects/Sequenciables/SequenciableIPRepository/HSVRGBTransformation.h</itemPath>
       <itemPath>HSVVecEvent.h</itemPath>
       <itemPath>HSVVecListener.h</itemPath>
       <itemPath>IplEvent.h</itemPath>
       <itemPath>IplListener.h</itemPath>
       <itemPath>LABListener.h</itemPath>
+      <itemPath>/home/claudio/NetBeansProjects/Sequenciables/SequenciableIPRepository/LABRGBTransformation.h</itemPath>
       <itemPath>RGBListener.h</itemPath>
       <itemPath>SmoothFilter.h</itemPath>
     </logicalFolder>
@@ -93,10 +95,16 @@
         <cTool>
           <incDir>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>
         </ccTool>
@@ -130,10 +138,16 @@
         <cTool>
           <incDir>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>
         </ccTool>
@@ -163,10 +177,69 @@
         <cTool>
           <incDir>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>/home/claudio/NetBeansProjects/Sequenciables/Sequenciables</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerAddLib>
+            <pElem>../Sequenciables/dist/DebugLinux/GNU-Linux-x86</pElem>
+            <pElem>/usr/local/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibStdlibItem>CppUnit</linkerLibStdlibItem>
+            <linkerLibLibItem>cv</linkerLibLibItem>
+            <linkerLibLibItem>cxcore</linkerLibLibItem>
+            <linkerLibLibItem>highgui</linkerLibLibItem>
+            <linkerLibLibItem>sequenciables</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+    </conf>
+    <conf name="ReleaseLinux" type="3">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <developmentMode>6</developmentMode>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>/usr/local/include/opencv</pElem>
+            <pElem>/usr/local/include</pElem>
+            <pElem>/home/claudio/NetBeansProjects/Sequenciables/Sequenciables</pElem>
+          </incDir>
+          <warningLevel>0</warningLevel>
+        </ccTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>/home/claudio/NetBeansProjects/Sequenciables/Sequenciables</pElem>
           </incDir>
