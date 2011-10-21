@@ -15,14 +15,23 @@
 //#include <RGBGenerator.h>
 #include <LABListener.h>
 #include <ShortCircuitException.h>
+#include <LABRGBTransformation.h>
 
-class RGBtoLABTransform: public RGBListener, public Sequenciable {
+class RGBtoLABTransform: public RGBListener, public LABRGBTransformation,  public Sequenciable {
 public:
 	RGBtoLABTransform();
 	virtual ~RGBtoLABTransform();
 	virtual void actionPerformed(Event* e);
               virtual bool verifyOutputCompatibility(Sequenciable *lis){
-                  return dynamic_cast<LABListener*>(lis);
+                  if(!dynamic_cast<LABListener*>(lis))
+                      return false;
+                  else{
+                      if(dynamic_cast<LABRGBTransformation*>(lis))
+                        return false;
+                      else
+                        return true;
+                  }
+                  
               };
               	virtual bool addSequenciableListener(Sequenciable *_hsvlis){
 		if(_hsvlis==this)

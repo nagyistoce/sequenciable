@@ -30,6 +30,14 @@ CND_ARTIFACT_PATH_DebugLinux=dist/DebugLinux/GNU-Linux-x86/libsequenciableiprepo
 CND_PACKAGE_DIR_DebugLinux=dist/DebugLinux/GNU-Linux-x86/package
 CND_PACKAGE_NAME_DebugLinux=SequenciableIPRepository.tar
 CND_PACKAGE_PATH_DebugLinux=dist/DebugLinux/GNU-Linux-x86/package/SequenciableIPRepository.tar
+# ReleaseLinux configuration
+CND_PLATFORM_ReleaseLinux=GNU-Linux-x86
+CND_ARTIFACT_DIR_ReleaseLinux=dist/ReleaseLinux/GNU-Linux-x86
+CND_ARTIFACT_NAME_ReleaseLinux=libsequenciableiprepository.a
+CND_ARTIFACT_PATH_ReleaseLinux=dist/ReleaseLinux/GNU-Linux-x86/libsequenciableiprepository.a
+CND_PACKAGE_DIR_ReleaseLinux=dist/ReleaseLinux/GNU-Linux-x86/package
+CND_PACKAGE_NAME_ReleaseLinux=SequenciableIPRepository.tar
+CND_PACKAGE_PATH_ReleaseLinux=dist/ReleaseLinux/GNU-Linux-x86/package/SequenciableIPRepository.tar
 #
 # include compiler specific variables
 #
