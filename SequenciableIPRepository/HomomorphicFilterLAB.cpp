@@ -33,7 +33,7 @@ void HomomorphicFilterLAB::processingCore() {
     cvCopy(input, output);
 
     IplImage *inputA = cvCreateImage(cvGetSize(output), IPL_DEPTH_8U, 1);
-    cvSetImageCOI(output, 3);
+    cvSetImageCOI(output, 1);
     cvCopy(output, inputA);
 
     IplImage* outputPre = homomorphicFilterProcess(inputA);
