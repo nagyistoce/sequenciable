@@ -36,6 +36,10 @@
         <itemPath>homomorphic_opencv.cpp</itemPath>
         <itemPath>homomorphic_opencv.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f3" displayName="Segmentation" projectFiles="true">
+        <itemPath>/home/claudio/NetBeansProjects/Sequenciables/SequenciableIPRepository/MeanShift.cpp</itemPath>
+        <itemPath>/home/claudio/NetBeansProjects/Sequenciables/SequenciableIPRepository/MeanShift.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1" displayName="Transformations" projectFiles="true">
         <itemPath>HSV2HSVVec.cpp</itemPath>
         <itemPath>HSV2HSVVec.h</itemPath>
@@ -98,10 +102,12 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -141,10 +147,12 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -168,6 +176,7 @@
             <pElem>/usr/local/include/opencv</pElem>
             <pElem>/usr/local/include</pElem>
             <pElem>/home/claudio/NetBeansProjects/Sequenciables/Sequenciables</pElem>
+            <pElem>/home/claudio/NetBeansProjects/MeanShiftEDISON</pElem>
           </incDir>
         </ccTool>
         <archiverTool>
@@ -180,10 +189,12 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -220,6 +231,7 @@
             <pElem>/usr/local/include/opencv</pElem>
             <pElem>/usr/local/include</pElem>
             <pElem>/home/claudio/NetBeansProjects/Sequenciables/Sequenciables</pElem>
+            <pElem>/home/claudio/NetBeansProjects/MeanShiftEDISON</pElem>
           </incDir>
           <warningLevel>0</warningLevel>
         </ccTool>
@@ -233,10 +245,12 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
