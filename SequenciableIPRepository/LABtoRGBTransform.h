@@ -19,8 +19,11 @@ public:
     LABtoRGBTransform();
     virtual ~LABtoRGBTransform();
     virtual void actionPerformed(Event* ev);
-
-    virtual bool verifyOutputCompatibility(Sequenciable *lis) {
+    virtual Type* getType(){
+        LABListener *type;
+        return type;
+    };
+    virtual bool verifyOutputCompatibility(Type *lis) {
         if (!dynamic_cast<RGBListener*> (lis))
             return false;
         else {
@@ -35,11 +38,11 @@ public:
         if (_rgblis == this)
             throw new ShortCircuitException();
 
-        if (verifyOutputCompatibility(_rgblis)) {
+       // if (verifyOutputCompatibility(_rgblis)) {
             listeners.push_back(_rgblis);
-            return true;
-        } else
-            return false;
+         //   return true;
+        //} else
+          //  return false;
     };
 private:
     IplImage *input, *output;

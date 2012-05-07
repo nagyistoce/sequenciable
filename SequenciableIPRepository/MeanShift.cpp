@@ -15,7 +15,7 @@ MeanShiftProcessor::MeanShiftProcessor(int _sigmaS, float _sigmaR, int _minRegio
     minRegions = _minRegions;
     msp = new MSPerformer(sigmaS,sigmaR,minRegions);
     processed = false;
-    
+    inputCompatibility.push_back(new RGBListener());
 }
 
 MeanShiftProcessor::~MeanShiftProcessor() {
@@ -24,6 +24,7 @@ MeanShiftProcessor::~MeanShiftProcessor() {
     if (output != NULL)
         cvReleaseImage(&output);
     processed = false;
+    inputCompatibility.clear();
 }
 
 void MeanShiftProcessor::actionPerformed(Event* ev) {

@@ -13,6 +13,7 @@ RGBtoLABTransform::RGBtoLABTransform() {
     input = NULL;
     output = NULL;
     processed = false;
+    inputCompatibility.push_back(new RGBListener());
 }
 
 RGBtoLABTransform::~RGBtoLABTransform() {
@@ -22,6 +23,7 @@ RGBtoLABTransform::~RGBtoLABTransform() {
     if (output!=NULL)
         cvReleaseImage(&output);
     processed = false;
+    inputCompatibility.clear();
 }
 
 void RGBtoLABTransform::actionPerformed(Event* ev) {

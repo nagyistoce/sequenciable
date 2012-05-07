@@ -21,8 +21,13 @@ class RGBtoLABTransform: public RGBListener, public LABRGBTransformation,  publi
 public:
 	RGBtoLABTransform();
 	virtual ~RGBtoLABTransform();
+
+    virtual Type* getType() {
+        RGBListener *type;
+        return type;
+    };
 	virtual void actionPerformed(Event* e);
-              virtual bool verifyOutputCompatibility(Sequenciable *lis){
+              virtual bool verifyOutputCompatibility(Type *lis){
                   if(!dynamic_cast<LABListener*>(lis))
                       return false;
                   else{
@@ -37,7 +42,7 @@ public:
 		if(_hsvlis==this)
 			throw new ShortCircuitException();
                 
-                if(verifyOutputCompatibility(_hsvlis)){
+                if(verifyOutputCompatibility(_hsvlis->getType())){
 		listeners.push_back(_hsvlis);
                         return true;
                 }

@@ -22,14 +22,17 @@ public:
     virtual ~HSV2HSVVec();
     virtual void processingCore();
     virtual void actionPerformed(Event* e);
-
+virtual Type* getType(){
+        HSVListener *type;
+        return type;
+    };
     virtual bool addSequenciableListener(Sequenciable* _hsvveclis) {
         if (_hsvveclis == this)
             throw new ShortCircuitException();
         listeners.push_back(_hsvveclis);
     }
 
-    virtual bool verifyOutputCompatibility(Sequenciable *lis) {
+    virtual bool verifyOutputCompatibility(Type *lis) {
         return dynamic_cast<HSVVecListener*> (lis);
     };
     virtual std::vector<HSVColor> getOutputHSVColorVector();

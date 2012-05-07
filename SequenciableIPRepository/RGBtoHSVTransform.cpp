@@ -16,6 +16,7 @@ RGBtoHSVTransform::RGBtoHSVTransform() {
     processed = false;
     input = NULL;
     output = NULL;
+    inputCompatibility.push_back(new RGBListener());
 }
 
 RGBtoHSVTransform::~RGBtoHSVTransform() {
@@ -25,6 +26,7 @@ RGBtoHSVTransform::~RGBtoHSVTransform() {
     if(output!=NULL)
         cvReleaseImage(&output);
     processed = false;
+    inputCompatibility.clear();
 
 }
 void RGBtoHSVTransform::processingCore(){

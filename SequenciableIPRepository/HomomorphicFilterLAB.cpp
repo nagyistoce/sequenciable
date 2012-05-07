@@ -17,6 +17,7 @@ HomomorphicFilterLAB::HomomorphicFilterLAB(int _filterOrder, int _cutFrequency, 
     processed = false;
     input = NULL;
     output = NULL;
+    inputCompatibility.push_back(new LABListener());
 }
 
 HomomorphicFilterLAB::~HomomorphicFilterLAB() {
@@ -27,6 +28,7 @@ HomomorphicFilterLAB::~HomomorphicFilterLAB() {
         cvReleaseImage(&output);
 
     processed = false;
+    inputCompatibility.clear();
 }
 
 void HomomorphicFilterLAB::processingCore() {
