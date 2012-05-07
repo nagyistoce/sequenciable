@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>Event.h</itemPath>
       <itemPath>Sequenciable.h</itemPath>
+      <itemPath>Type.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
