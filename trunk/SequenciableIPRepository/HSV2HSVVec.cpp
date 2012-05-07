@@ -8,11 +8,13 @@
 #include <opencv/cxcore.h>
 
 #include "HSV2HSVVec.h"
+#include "RGBListener.h"
 
 HSV2HSVVec::HSV2HSVVec(int _greyEclusion) {
     // TODO Auto-generated constructor stub
     greyExclusionType = _greyEclusion;
     input = NULL;
+    inputCompatibility.push_back(new HSVListener());
 }
 
 HSV2HSVVec::~HSV2HSVVec() {
@@ -20,6 +22,7 @@ HSV2HSVVec::~HSV2HSVVec() {
     if (input!=NULL) {
         cvReleaseImage(&input);
     }
+    inputCompatibility.clear();
 }
 
 void HSV2HSVVec::getVectorOfHSVfromHSVIplImage(IplImage *srcHSV, int type) {

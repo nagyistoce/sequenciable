@@ -10,10 +10,12 @@
 HSVColorClusterEstimation::HSVColorClusterEstimation(int neighbor) {
 	// TODO Auto-generated constructor stub
 	neighborhoodEstimation = neighbor;
+        inputCompatibility.push_back(new HSVVecListener());
 }
 
 HSVColorClusterEstimation::~HSVColorClusterEstimation() {
 	// TODO Auto-generated destructor stub
+    inputCompatibility.clear();
 }
 vector<HSVColor> HSVColorClusterEstimation::estimateClustersForHSV(vector<HSVColor> cores,int neighboorhood){
 	//Estimating clusters based on HSV Histogram

@@ -10,8 +10,9 @@
 
 #include <cv.h>
 #include <IplEvent.h>
+#include <Sequenciable.h>
 
-class IplListener {
+class IplListener : public Type {
 public:
 	IplListener(){};
 	virtual ~IplListener(){};

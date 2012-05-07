@@ -9,8 +9,9 @@
 #define HSVVECLISTENER_H_
 
 #include "HSVVecEvent.h"
+#include <Type.h>
 
-class HSVVecListener {
+class HSVVecListener : public Type {
 public:
 	HSVVecListener(){};
 	virtual ~HSVVecListener(){};

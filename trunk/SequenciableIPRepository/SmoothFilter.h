@@ -24,19 +24,26 @@ public:
 		if(_rgblis==this)
 			throw new ShortCircuitException();
                 
-                if(verifyOutputCompatibility(_rgblis)){
+                if(verifyOutputCompatibility(_rgblis->getType())){
 		listeners.push_back(_rgblis);
                         return true;
                 }
                 else
                     return false;
 	};
+
+    virtual Type* getType() {
+        if(type==NULL){
+            type = new RGBListener();
+        }
+        return type;
+    };
               virtual void actionPerformed(Event *e);
 	//virtual void actionPerformed(IplEvent* e);
 //              virtual bool verifyInputCompatibility(Sequenciable* s){
 //                  return dynamic_cast<RGBGenerator*>(s);
 //              };
-              virtual bool verifyOutputCompatibility(Sequenciable *lis){
+              virtual bool verifyOutputCompatibility(Type *lis){
                   return dynamic_cast<RGBListener*>(lis);
               };
 protected:
@@ -49,6 +56,7 @@ protected:
 
 private:
 	virtual void processingCore();
+
 //	IplImage *input,*output;
 };
 

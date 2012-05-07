@@ -18,6 +18,7 @@ HomomorphicFilterHSV::HomomorphicFilterHSV(int _filterOrder, int _cutFrequency, 
     processed = false;
     input=NULL;
     output=NULL;
+    inputCompatibility.push_back(new HSVListener());
 }
 
 HomomorphicFilterHSV::~HomomorphicFilterHSV() {
@@ -27,6 +28,7 @@ HomomorphicFilterHSV::~HomomorphicFilterHSV() {
     if(output!=NULL)
         cvReleaseImage(&output);
     processed = false;
+    inputCompatibility.clear();
 }
 
 void HomomorphicFilterHSV::processingCore() {

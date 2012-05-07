@@ -13,6 +13,7 @@ HSVtoRGBTransform::HSVtoRGBTransform() {
     processed = false;
     input = NULL;
     output = NULL;
+    inputCompatibility.push_back(new HSVListener());
 }
 
 HSVtoRGBTransform::~HSVtoRGBTransform() {
@@ -22,6 +23,7 @@ HSVtoRGBTransform::~HSVtoRGBTransform() {
     if(output!=NULL)
         cvReleaseImage(&output);
     processed = false;
+    inputCompatibility.clear();
 }
 
 void HSVtoRGBTransform::actionPerformed(Event* ev) {

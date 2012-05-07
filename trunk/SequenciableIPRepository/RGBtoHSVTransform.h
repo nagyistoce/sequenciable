@@ -26,7 +26,7 @@ public:
 //              virtual bool verifyInputCompatibility(Sequenciable* s){
 //                  return dynamic_cast<RGBGenerator*>(s);
 //              };
-              virtual bool verifyOutputCompatibility(Sequenciable *lis){
+              virtual bool verifyOutputCompatibility(Type *lis){
                   if(!dynamic_cast<HSVListener*>(lis)){
                       return false;
                   }else{
@@ -36,6 +36,11 @@ public:
                         return true;
                   }
               };
+
+    virtual Type* getType() {
+        RGBListener *type;
+        return type;
+    };
 //	virtual void addHSVListener(HSVListener* _hsvlis){
 ////			if(_hsvlis==this)
 ////				throw new ShortCircuitException();
@@ -46,7 +51,7 @@ public:
 		if(_hsvlis==this)
 			throw new ShortCircuitException();
                 
-                if(verifyOutputCompatibility(_hsvlis)){
+                if(verifyOutputCompatibility(_hsvlis->getType())){
 		listeners.push_back(_hsvlis);
                         return true;
                 }

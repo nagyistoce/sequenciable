@@ -10,6 +10,8 @@ SmoothFilter::SmoothFilter(int type, int sz1, int sz2, double p1, double p2) {
     size2 = sz2;
     param1 = p1;
     param2 = p2;
+    type = NULL;
+    inputCompatibility.push_back(new RGBListener());
 }
 
 SmoothFilter::~SmoothFilter() {
@@ -19,6 +21,9 @@ SmoothFilter::~SmoothFilter() {
     if (output != NULL)
         cvReleaseImage(&output);
     processed = false;
+    inputCompatibility.clear();
+    if(type!=NULL)
+        delete type;
 }
 
 void SmoothFilter::processingCore() {

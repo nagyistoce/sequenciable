@@ -17,20 +17,22 @@ class MeanShiftProcessor : public Sequenciable, public RGBListener {
 public:
     MeanShiftProcessor(int _sigmaS=6, float _sigmaR=7.0, int _minRegions=10);
     virtual ~MeanShiftProcessor();
-
     virtual bool addSequenciableListener(Sequenciable *_rgblis) {
         if (_rgblis == this)
             throw new ShortCircuitException();
 
-        if (verifyOutputCompatibility(_rgblis)) {
+//        if (verifyOutputCompatibility(_rgblis)) {
             listeners.push_back(_rgblis);
-            return true;
-        } else
-            return false;
+//            return true;
+//        } else
+//            return false;
     };
     virtual void actionPerformed(Event *e);
-
-    virtual bool verifyOutputCompatibility(Sequenciable *lis) {
+    virtual Type* getType(){
+        RGBListener *type;
+        return type;
+    };
+    virtual bool verifyOutputCompatibility(Type *lis) {
         return dynamic_cast<RGBListener*> (lis);
     };
 private:

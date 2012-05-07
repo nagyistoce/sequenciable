@@ -22,15 +22,19 @@ public:
     virtual void actionPerformed(Event* e);
     virtual void processingCore();
 
-    virtual bool verifyOutputCompatibility(Sequenciable *lis) {
+    virtual bool verifyOutputCompatibility(Type *lis) {
         return dynamic_cast<LABListener*> (lis);
     };
-
+    virtual Type* getType(){
+        if(type==NULL)
+            type = new LABListener();
+        return type;
+    };
     virtual bool addSequenciableListener(Sequenciable *_hsvlis) {
         if (_hsvlis == this)
             throw new ShortCircuitException();
 
-        if (verifyOutputCompatibility(_hsvlis)) {
+        if (verifyOutputCompatibility(_hsvlis->getType())) {
             listeners.push_back(_hsvlis);
             return true;
         } else

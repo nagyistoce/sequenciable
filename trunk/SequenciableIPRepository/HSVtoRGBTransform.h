@@ -22,6 +22,7 @@ class HSVtoRGBTransform: public HSVListener, public Sequenciable, public HSVRGBT
 public:
 	HSVtoRGBTransform();
 	virtual ~HSVtoRGBTransform();
+        
 //	virtual void processingCore();
 	virtual void actionPerformed(Event* ev);
 //	virtual void addHSVListener(HSVListener* _hsvlis){
@@ -33,7 +34,7 @@ public:
 //              virtual bool verifyInputCompatibility(Sequenciable* s){
 //                  return dynamic_cast<HSVGenerator*>(s);
 //              };
-              virtual bool verifyOutputCompatibility(Sequenciable *lis){
+              virtual bool verifyOutputCompatibility(Type *lis){
                   if(!dynamic_cast<RGBListener*>(lis)){
                       return false;
                   }else{
@@ -44,6 +45,11 @@ public:
                   }
 
               };
+
+    virtual Type* getType() {
+        RGBListener *type;
+        return type;
+    };
 //	virtual void addRGBListener(RGBListener* _rgblis){
 ////		if(_rgblis==this)
 ////			throw new ShortCircuitException();
@@ -54,7 +60,7 @@ public:
 		if(_rgblis==this)
 			throw new ShortCircuitException();
                 
-                if(verifyOutputCompatibility(_rgblis)){
+                if(verifyOutputCompatibility(_rgblis->getType())){
 		listeners.push_back(_rgblis);
                         return true;
                 }

@@ -14,6 +14,7 @@ LABtoRGBTransform::LABtoRGBTransform() {
     processed = false;
     input = NULL;
     output = NULL;
+    inputCompatibility.push_back(new LABListener());
 }
 
 LABtoRGBTransform::~LABtoRGBTransform() {
@@ -23,7 +24,7 @@ LABtoRGBTransform::~LABtoRGBTransform() {
     if(output!=NULL)
         cvReleaseImage(&output);
     processed = false;
-
+    inputCompatibility.clear();
 }
 
 void LABtoRGBTransform::actionPerformed(Event* ev) {
