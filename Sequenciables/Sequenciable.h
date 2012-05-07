@@ -10,14 +10,19 @@
 
 #include "Event.h"
 #include <vector>
+#include "Type.h"
 
 class Sequenciable {
 public:
     Sequenciable();
-    Sequenciable(Sequenciable* orig);
+//    Sequenciable(Sequenciable* orig);
     virtual ~Sequenciable();
-    //virtual bool verifyInputCompatibility(Sequenciable* s)=0;
-    virtual bool verifyOutputCompatibility(Sequenciable *lis)=0;
+
+    std::vector<Type*> getInputRequirements(){
+        return inputCompatibility;
+    };
+    virtual Type* getType()=0;
+    virtual bool verifyOutputCompatibility(Type *lis)=0;
     virtual bool addSequenciableListener(Sequenciable *lis)=0;
     virtual void actionPerformed(Event *e)=0;
     virtual void clearListeners(){
@@ -25,6 +30,8 @@ public:
     }
 protected:
     std::vector<Sequenciable*> listeners;
+    std::vector<Type*> inputCompatibility;
+    Type *type;
 };
 
 #endif	/* SEQUENCIABLE_H */
