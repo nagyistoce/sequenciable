@@ -34,6 +34,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Sequence.o \
+	${OBJECTDIR}/NoOutputReachableException.o \
 	${OBJECTDIR}/Event.o \
 	${OBJECTDIR}/IncompatibleClassesException.o \
 	${OBJECTDIR}/ShortCircuitException.o \
@@ -65,6 +67,16 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsequenciables.a: ${OBJECTFILES}
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsequenciables.a
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsequenciables.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsequenciables.a
+
+${OBJECTDIR}/Sequence.o: Sequence.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Sequence.o Sequence.cpp
+
+${OBJECTDIR}/NoOutputReachableException.o: NoOutputReachableException.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/NoOutputReachableException.o NoOutputReachableException.cpp
 
 ${OBJECTDIR}/Event.o: Event.cpp 
 	${MKDIR} -p ${OBJECTDIR}
