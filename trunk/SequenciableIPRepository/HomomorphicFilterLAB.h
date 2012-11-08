@@ -19,16 +19,21 @@ class HomomorphicFilterLAB : public HomomorphicFilter, public LABListener, publi
 public:
     HomomorphicFilterLAB(int filterOrder = 1, int cutFrequency = 100, int gain = 1, int filterType = -1);
     virtual ~HomomorphicFilterLAB();
+    Sequenciable* getClone();
     virtual void actionPerformed(Event* e);
     virtual void processingCore();
 
     virtual bool verifyOutputCompatibility(Type *lis) {
         return dynamic_cast<LABListener*> (lis);
     };
+    virtual bool verifyInputCompatibility(Type *lis) {
+        return dynamic_cast<LABListener*> (lis);
+    };
     virtual Type* getType(){
-        if(type==NULL)
-            type = new LABListener();
-        return type;
+//        if(type==NULL)
+//            type = new LABListener();
+//        return type;
+        return this;
     };
     virtual bool addSequenciableListener(Sequenciable *_hsvlis) {
         if (_hsvlis == this)

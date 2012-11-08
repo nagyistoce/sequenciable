@@ -19,15 +19,22 @@ class HomomorphicFilterHSV : public HomomorphicFilter, public HSVListener, publi
 public:
     HomomorphicFilterHSV(int filterOrder = 1, int cutFrequency = 100, int gain = 1, int filterType = -1);
     virtual ~HomomorphicFilterHSV();
+    virtual Sequenciable* getClone();
     virtual void actionPerformed(Event* e);
     virtual void processingCore();
 
     virtual bool verifyOutputCompatibility(Type *lis) {
         return dynamic_cast<HSVListener*> (lis);
     };
+    virtual bool verifyInputCompatibility(Type *lis) {
+        return dynamic_cast<HSVListener*> (lis);
+    };
     virtual Type* getType(){
-        HSVListener *type;
-        return type;
+//         if(type==NULL){
+//            type = new HSVListener();
+//        }
+//        return type;
+        return this;
     };
 //    virtual bool isOfType(Type *t){
 //        return dynamic_cast<HSVListener*>(t);

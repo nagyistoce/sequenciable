@@ -8,7 +8,10 @@
             <cpp-extensions>cpp</cpp-extensions>
             <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
-            <make-dep-projects/>
+            <make-dep-projects>
+                <make-dep-project>../Sequenciables</make-dep-project>
+                <make-dep-project>../../ColorSegmentatorDiscover/MeanShiftEDISON</make-dep-project>
+            </make-dep-projects>
             <sourceRootList/>
             <confList>
                 <confElem>
@@ -25,6 +28,10 @@
                 </confElem>
                 <confElem>
                     <name>ReleaseLinux</name>
+                    <type>3</type>
+                </confElem>
+                <confElem>
+                    <name>RemoteDebugLinux</name>
                     <type>3</type>
                 </confElem>
             </confList>

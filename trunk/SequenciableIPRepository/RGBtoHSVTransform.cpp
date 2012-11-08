@@ -17,6 +17,11 @@ RGBtoHSVTransform::RGBtoHSVTransform() {
     input = NULL;
     output = NULL;
     inputCompatibility.push_back(new RGBListener());
+    type = NULL;
+    
+    SEQUENCIABLE_ID = 5;
+    textualDescription = "RGB->HSV";
+
 }
 
 RGBtoHSVTransform::~RGBtoHSVTransform() {
@@ -26,8 +31,18 @@ RGBtoHSVTransform::~RGBtoHSVTransform() {
     if(output!=NULL)
         cvReleaseImage(&output);
     processed = false;
+    for(int a=0; a< inputCompatibility.size();a++){
+        RGBListener *l = (RGBListener*)inputCompatibility[a];
+        delete l;
+    }
     inputCompatibility.clear();
 
+    inputCompatibility.clear();
+    if(type!=NULL)
+        delete type;
+}
+Sequenciable* RGBtoHSVTransform::getClone(){
+    return new RGBtoHSVTransform();
 }
 void RGBtoHSVTransform::processingCore(){
 		cvCvtColor(input,output,CV_BGR2HSV);

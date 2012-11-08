@@ -18,6 +18,17 @@ HomomorphicFilterLAB::HomomorphicFilterLAB(int _filterOrder, int _cutFrequency, 
     input = NULL;
     output = NULL;
     inputCompatibility.push_back(new LABListener());
+    
+    SEQUENCIABLE_ID = 3;
+    stringstream fullDescriptor;
+    fullDescriptor << "HomomorphicLAB(" <<  _filterOrder << "," << _cutFrequency << "," << _gain << "," << _filterType << ")";
+    textualDescription = fullDescriptor.str();
+
+    //int filterOrder=1, int cutFrequency=100,int gain=1,int filterType=-1
+    variablesTypesAndRanges.addTypesAndRanges(1, 0, 1);
+    variablesTypesAndRanges.addTypesAndRanges(1, 0, 1000);
+    variablesTypesAndRanges.addTypesAndRanges(1, 0, 5);
+    
 }
 
 HomomorphicFilterLAB::~HomomorphicFilterLAB() {
@@ -28,9 +39,15 @@ HomomorphicFilterLAB::~HomomorphicFilterLAB() {
         cvReleaseImage(&output);
 
     processed = false;
+    for(int a=0; a< inputCompatibility.size();a++){
+        LABListener *l = (LABListener*)inputCompatibility[a];
+        delete l;
+    }
     inputCompatibility.clear();
 }
-
+Sequenciable* HomomorphicFilterLAB::getClone(){
+    return new HomomorphicFilterLAB(filterOrder,cutFrequency,gain,filterType);
+}
 void HomomorphicFilterLAB::processingCore() {
     cvCopy(input, output);
 

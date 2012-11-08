@@ -16,6 +16,19 @@ MeanShiftProcessor::MeanShiftProcessor(int _sigmaS, float _sigmaR, int _minRegio
     msp = new MSPerformer(sigmaS,sigmaR,minRegions);
     processed = false;
     inputCompatibility.push_back(new RGBListener());
+    type = NULL;
+
+    SEQUENCIABLE_ID = 9;
+    //textualDescription = "MeanShift";
+    stringstream fullDescriptor;
+    fullDescriptor << "MeanShift(" <<_sigmaS << "," << _sigmaR << "," << _minRegions << ")";
+    textualDescription = fullDescriptor.str();
+     //Sigma S
+    variablesTypesAndRanges.addTypesAndRanges(1, 1, 20);
+     //Sigma R
+    variablesTypesAndRanges.addTypesAndRanges(0, 1, 20);
+     //min Regions
+    variablesTypesAndRanges.addTypesAndRanges(1, 1, 40);
 }
 
 MeanShiftProcessor::~MeanShiftProcessor() {
@@ -24,9 +37,21 @@ MeanShiftProcessor::~MeanShiftProcessor() {
     if (output != NULL)
         cvReleaseImage(&output);
     processed = false;
+    for(int a=0; a< inputCompatibility.size();a++){
+        RGBListener *l = (RGBListener*)inputCompatibility[a];
+        delete l;
+    }
     inputCompatibility.clear();
-}
 
+    inputCompatibility.clear();
+    if(type!=NULL)
+        delete type;
+    
+    delete msp;
+}
+Sequenciable* MeanShiftProcessor::getClone(){
+    return new MeanShiftProcessor(sigmaS,sigmaR,minRegions);
+}
 void MeanShiftProcessor::actionPerformed(Event* ev) {
     IplEvent *e = (IplEvent*) ev;
     if (input != NULL)

@@ -23,7 +23,9 @@ public:
 	HSVtoRGBTransform();
 	virtual ~HSVtoRGBTransform();
         
+        Sequenciable *getClone();
 //	virtual void processingCore();
+        
 	virtual void actionPerformed(Event* ev);
 //	virtual void addHSVListener(HSVListener* _hsvlis){
 //			if(_hsvlis==this)
@@ -45,10 +47,24 @@ public:
                   }
 
               };
+                virtual bool verifyInputCompatibility(Type *lis){
+                  if(!dynamic_cast<HSVListener*>(lis)){
+                      return false;
+                  }else{
+                      if(dynamic_cast<HSVRGBTransformation*>(lis))
+                        return false;
+                      else
+                        return true;
+                  }
+
+              };
 
     virtual Type* getType() {
-        RGBListener *type;
-        return type;
+//        if(type==NULL){
+//            type = new RGBListener();
+//        }
+//        return type;
+        return this;
     };
 //	virtual void addRGBListener(RGBListener* _rgblis){
 ////		if(_rgblis==this)

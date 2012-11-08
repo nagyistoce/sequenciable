@@ -13,7 +13,7 @@
 #include <Sequenciable.h>
 #include <ShortCircuitException.h>
 #include <IplEvent.h>
-
+#include <HSVListener.h>
 class HSVColorClusterEstimation : public HSVVecListener, public Sequenciable {
 public:
     HSVColorClusterEstimation(int neighbor);
@@ -39,6 +39,9 @@ public:
 //    };
     virtual bool verifyOutputCompatibility(Sequenciable *lis){
         return dynamic_cast<HSVVecListener*>(lis);
+    };
+    virtual bool verifyInputCompatibility(Sequenciable *lis){
+        return dynamic_cast<HSVListener*>(lis);
     };
       	virtual bool addSequenciableListener(Sequenciable *_hsvveclis){
 		if(_hsvveclis==this)

@@ -22,9 +22,13 @@ public:
 	RGBtoLABTransform();
 	virtual ~RGBtoLABTransform();
 
+        virtual Sequenciable* getClone();
     virtual Type* getType() {
-        RGBListener *type;
-        return type;
+//        if(type==NULL){
+//            type = new RGBListener();
+//        }
+//        return type;
+        return this;
     };
 	virtual void actionPerformed(Event* e);
               virtual bool verifyOutputCompatibility(Type *lis){
@@ -38,6 +42,10 @@ public:
                   }
                   
               };
+              virtual bool verifyInputCompatibility(Type *lis){
+                  return dynamic_cast<RGBListener*>(lis);
+              };
+
               	virtual bool addSequenciableListener(Sequenciable *_hsvlis){
 		if(_hsvlis==this)
 			throw new ShortCircuitException();

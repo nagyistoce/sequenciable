@@ -31,6 +31,7 @@ public:
                 else
                     return false;
 	};
+        virtual Sequenciable* getClone();
 
     virtual Type* getType() {
         if(type==NULL){
@@ -46,13 +47,15 @@ public:
               virtual bool verifyOutputCompatibility(Type *lis){
                   return dynamic_cast<RGBListener*>(lis);
               };
+              virtual bool verifyInputCompatibility(Type *lis){
+                  return dynamic_cast<RGBListener*>(lis);
+              };
 protected:
-//	bool inputImageSet,processed;
-	int smoothType;
-	int size1,size2;
-	double param1,param2;
-              bool inputImageSet, processed;
-              IplImage *input, *output;
+    int smoothType;
+    int size1,size2;
+    double param1,param2;
+    bool inputImageSet, processed;
+    IplImage *input, *output;
 
 private:
 	virtual void processingCore();
