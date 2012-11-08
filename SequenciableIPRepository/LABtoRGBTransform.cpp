@@ -15,6 +15,9 @@ LABtoRGBTransform::LABtoRGBTransform() {
     input = NULL;
     output = NULL;
     inputCompatibility.push_back(new LABListener());
+    
+    SEQUENCIABLE_ID = 6;
+    textualDescription = "LAB->RGB";
 }
 
 LABtoRGBTransform::~LABtoRGBTransform() {
@@ -24,9 +27,17 @@ LABtoRGBTransform::~LABtoRGBTransform() {
     if(output!=NULL)
         cvReleaseImage(&output);
     processed = false;
+    for(int a=0; a< inputCompatibility.size();a++){
+        LABListener *l = (LABListener*)inputCompatibility[a];
+        delete l;
+    }
+    inputCompatibility.clear();
+
     inputCompatibility.clear();
 }
-
+Sequenciable* LABtoRGBTransform::getClone(){
+    return new LABtoRGBTransform();
+}
 void LABtoRGBTransform::actionPerformed(Event* ev) {
     IplEvent *e = (IplEvent*) ev;
     if(input!=NULL)

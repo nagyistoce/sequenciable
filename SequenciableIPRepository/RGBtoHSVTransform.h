@@ -21,6 +21,7 @@ class RGBtoHSVTransform: public RGBListener, public Sequenciable, public HSVRGBT
 public:
 	RGBtoHSVTransform();
 	virtual ~RGBtoHSVTransform();
+        virtual Sequenciable* getClone();
 	virtual void actionPerformed(Event* e);
 	virtual void processingCore();
 //              virtual bool verifyInputCompatibility(Sequenciable* s){
@@ -36,10 +37,23 @@ public:
                         return true;
                   }
               };
+              virtual bool verifyInputCompatibility(Type *lis){
+                  if(!dynamic_cast<RGBListener*>(lis))
+                        return false;
+                  else{
+                      if(dynamic_cast<HSVRGBTransformation*>(lis))
+                        return false;
+                      else
+                        return true;
+                  }
+              };
 
     virtual Type* getType() {
-        RGBListener *type;
-        return type;
+//        if(type==NULL){
+//            type = new HSVListener();
+//        }
+//        return type;
+        return this;
     };
 //	virtual void addHSVListener(HSVListener* _hsvlis){
 ////			if(_hsvlis==this)

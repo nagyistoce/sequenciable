@@ -24,7 +24,9 @@ HSV2HSVVec::~HSV2HSVVec() {
     }
     inputCompatibility.clear();
 }
-
+Sequenciable* HSV2HSVVec::getClone(){
+    return new HSV2HSVVec(greyExclusionType);
+}
 void HSV2HSVVec::getVectorOfHSVfromHSVIplImage(IplImage *srcHSV, int type) {
 
     //vector<HSVColor> cores;

@@ -18,11 +18,18 @@ class LABtoRGBTransform : public LABListener, public LABRGBTransformation, publi
 public:
     LABtoRGBTransform();
     virtual ~LABtoRGBTransform();
+    virtual Sequenciable* getClone();
     virtual void actionPerformed(Event* ev);
     virtual Type* getType(){
-        LABListener *type;
-        return type;
+//        if(type==NULL){
+//            type = new LABListener();
+//        }
+//        return type;
+        return this;
     };
+    virtual bool verifyInputCompatibility(Type *lis) {
+        return dynamic_cast<LABListener*>(lis);
+    }
     virtual bool verifyOutputCompatibility(Type *lis) {
         if (!dynamic_cast<RGBListener*> (lis))
             return false;

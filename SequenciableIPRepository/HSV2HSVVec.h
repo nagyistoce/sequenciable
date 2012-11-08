@@ -22,6 +22,7 @@ public:
     virtual ~HSV2HSVVec();
     virtual void processingCore();
     virtual void actionPerformed(Event* e);
+    virtual Sequenciable* getClone();
 virtual Type* getType(){
         HSVListener *type;
         return type;
@@ -34,6 +35,9 @@ virtual Type* getType(){
 
     virtual bool verifyOutputCompatibility(Type *lis) {
         return dynamic_cast<HSVVecListener*> (lis);
+    };
+    virtual bool verifyInputCompatibility(Type *lis) {
+        return dynamic_cast<HSVListener*> (lis);
     };
     virtual std::vector<HSVColor> getOutputHSVColorVector();
 private:

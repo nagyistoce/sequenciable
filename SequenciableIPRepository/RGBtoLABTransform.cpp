@@ -14,6 +14,10 @@ RGBtoLABTransform::RGBtoLABTransform() {
     output = NULL;
     processed = false;
     inputCompatibility.push_back(new RGBListener());
+    type = NULL;
+    
+    SEQUENCIABLE_ID = 7;
+    textualDescription = "RGB->LAB";
 }
 
 RGBtoLABTransform::~RGBtoLABTransform() {
@@ -23,9 +27,20 @@ RGBtoLABTransform::~RGBtoLABTransform() {
     if (output!=NULL)
         cvReleaseImage(&output);
     processed = false;
+    for(int a=0; a< inputCompatibility.size();a++){
+        RGBListener *l = (RGBListener*)inputCompatibility[a];
+        delete l;
+    }
     inputCompatibility.clear();
+
+    inputCompatibility.clear();
+    if(type!=NULL)
+        delete type;
 }
 
+Sequenciable* RGBtoLABTransform::getClone(){
+    return new RGBtoLABTransform();
+}
 void RGBtoLABTransform::actionPerformed(Event* ev) {
     IplEvent *e = (IplEvent*) ev;
     if(input!=NULL)
