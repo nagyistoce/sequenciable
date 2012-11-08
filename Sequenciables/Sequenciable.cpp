@@ -18,5 +18,24 @@ Sequenciable::Sequenciable() {
 //}
 
 Sequenciable::~Sequenciable() {
+    if(listeners.size()>0){
+//        for(int a=0;a<listeners.size();a++){
+//            Sequenciable* toDelete = listeners.at(a);
+//            if(toDelete!=NULL)
+//                delete toDelete;
+//        }
+        listeners.clear();
+    }
+    SEQUENCIABLE_ID = 0;
+    textualDescription = "";
 }
 
+bool Sequenciable::removeSequenciableListener(Sequenciable *lis){
+    for(int a=0;a<listeners.size();a++){
+        if(listeners.at(a)==lis){
+            listeners.erase(listeners.begin()+a);
+            return true;
+        }
+    }
+    return false;
+}
