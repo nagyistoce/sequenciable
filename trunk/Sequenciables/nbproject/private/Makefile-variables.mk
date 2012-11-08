@@ -7,3 +7,4 @@
 # Release configuration
 # DebugLinux configuration
 # ReleaseLinux configuration
+# RemoteDebugLinux configuration

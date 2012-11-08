@@ -22,6 +22,7 @@ AS=as
 
 # Macros
 CND_PLATFORM=GNU-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -39,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Event.o \
 	${OBJECTDIR}/IncompatibleClassesException.o \
 	${OBJECTDIR}/ShortCircuitException.o \
+	${OBJECTDIR}/SequenciableOutOfRangeException.o \
 	${OBJECTDIR}/Sequenciable.o
 
 
@@ -92,6 +94,11 @@ ${OBJECTDIR}/ShortCircuitException.o: ShortCircuitException.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/ShortCircuitException.o ShortCircuitException.cpp
+
+${OBJECTDIR}/SequenciableOutOfRangeException.o: SequenciableOutOfRangeException.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/SequenciableOutOfRangeException.o SequenciableOutOfRangeException.cpp
 
 ${OBJECTDIR}/Sequenciable.o: Sequenciable.cpp 
 	${MKDIR} -p ${OBJECTDIR}

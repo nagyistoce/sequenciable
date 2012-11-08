@@ -7,8 +7,10 @@
 
 #ifndef SEQUENCE_H
 #define	SEQUENCE_H
+#include <stdio.h>
 #include "Sequenciable.h"
 #include "NoOutputReachableException.h"
+#include "SequenciableOutOfRangeException.h"
 #include <vector>
 #include <typeinfo>
 
@@ -18,16 +20,23 @@ class Sequence {
 public:
     Sequence();
     Sequence(vector<Sequenciable*> seq);
+    Sequence(Sequence* seq);
     virtual ~Sequence();
     bool addToSequence(Sequenciable* );
     vector<Sequenciable*> findPossibilities(vector<Sequenciable*> availableOptions);
     bool reachesOutput();
-    static bool equalTo(Sequence *comparingFrom, Sequence *comparingTo);
+//    static bool equalTo(Sequence *comparingFrom, Sequence *comparingTo);
+    bool equalToSequence(Sequence *comparingTo);
     void setOutputer(Sequenciable *outp);
+    void setInputer(Sequenciable *inpt);
     void startPipeline(Event* t);
+    void startPipeline(Event* t,Sequenciable *outp);
+    int getSize();
+    
+    Sequenciable *getSequenciableAt(int at);
     
     //Getters and Setters
-    vector<Sequenciable*> getSequence();
+//    vector<Sequenciable*> getSequence();
     void setOutputType(Type* outputType);
     Type* getOutputType() const;
     void setInputType(Type* inputType);

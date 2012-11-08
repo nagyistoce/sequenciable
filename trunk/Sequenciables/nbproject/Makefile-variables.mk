@@ -38,6 +38,14 @@ CND_ARTIFACT_PATH_ReleaseLinux=dist/ReleaseLinux/GNU-Linux-x86/libsequenciables.
 CND_PACKAGE_DIR_ReleaseLinux=dist/ReleaseLinux/GNU-Linux-x86/package
 CND_PACKAGE_NAME_ReleaseLinux=Sequenciables.tar
 CND_PACKAGE_PATH_ReleaseLinux=dist/ReleaseLinux/GNU-Linux-x86/package/Sequenciables.tar
+# RemoteDebugLinux configuration
+CND_PLATFORM_RemoteDebugLinux=GNU-Linux-x86
+CND_ARTIFACT_DIR_RemoteDebugLinux=dist/RemoteDebugLinux/GNU-Linux-x86
+CND_ARTIFACT_NAME_RemoteDebugLinux=libsequenciables.a
+CND_ARTIFACT_PATH_RemoteDebugLinux=dist/RemoteDebugLinux/GNU-Linux-x86/libsequenciables.a
+CND_PACKAGE_DIR_RemoteDebugLinux=dist/RemoteDebugLinux/GNU-Linux-x86/package
+CND_PACKAGE_NAME_RemoteDebugLinux=Sequenciables.tar
+CND_PACKAGE_PATH_RemoteDebugLinux=dist/RemoteDebugLinux/GNU-Linux-x86/package/Sequenciables.tar
 #
 # include compiler specific variables
 #

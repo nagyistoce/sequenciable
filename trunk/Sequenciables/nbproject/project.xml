@@ -27,6 +27,10 @@
                     <name>ReleaseLinux</name>
                     <type>3</type>
                 </confElem>
+                <confElem>
+                    <name>RemoteDebugLinux</name>
+                    <type>3</type>
+                </confElem>
             </confList>
         </data>
     </configuration>
