@@ -40,12 +40,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/HSV2HSVVec.o \
 	${OBJECTDIR}/HSVColor.o \
 	${OBJECTDIR}/HomomorphicFilterLAB.o \
+	${OBJECTDIR}/SRMSegmentation.o \
 	${OBJECTDIR}/RGBtoLABTransform.o \
 	${OBJECTDIR}/MeanShift.o \
-	${OBJECTDIR}/LABtoRGBTransform.o \
 	${OBJECTDIR}/homomorphic_opencv.o \
+	${OBJECTDIR}/KMeansColorReduction.o \
+	${OBJECTDIR}/LABtoRGBTransform.o \
 	${OBJECTDIR}/HSVtoRGBTransform.o \
 	${OBJECTDIR}/HSVVecEvent.o \
+	${OBJECTDIR}/ContrastBrigthness.o \
 	${OBJECTDIR}/RGBtoHSVTransform.o \
 	${OBJECTDIR}/IplEvent.o \
 	${OBJECTDIR}/SmoothFilter.o \
@@ -109,6 +112,11 @@ ${OBJECTDIR}/HomomorphicFilterLAB.o: HomomorphicFilterLAB.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -MMD -MP -MF $@.d -o ${OBJECTDIR}/HomomorphicFilterLAB.o HomomorphicFilterLAB.cpp
 
+${OBJECTDIR}/SRMSegmentation.o: SRMSegmentation.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -MMD -MP -MF $@.d -o ${OBJECTDIR}/SRMSegmentation.o SRMSegmentation.cpp
+
 ${OBJECTDIR}/RGBtoLABTransform.o: RGBtoLABTransform.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -119,15 +127,20 @@ ${OBJECTDIR}/MeanShift.o: MeanShift.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -MMD -MP -MF $@.d -o ${OBJECTDIR}/MeanShift.o MeanShift.cpp
 
-${OBJECTDIR}/LABtoRGBTransform.o: LABtoRGBTransform.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -MMD -MP -MF $@.d -o ${OBJECTDIR}/LABtoRGBTransform.o LABtoRGBTransform.cpp
-
 ${OBJECTDIR}/homomorphic_opencv.o: homomorphic_opencv.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -MMD -MP -MF $@.d -o ${OBJECTDIR}/homomorphic_opencv.o homomorphic_opencv.cpp
+
+${OBJECTDIR}/KMeansColorReduction.o: KMeansColorReduction.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -MMD -MP -MF $@.d -o ${OBJECTDIR}/KMeansColorReduction.o KMeansColorReduction.cpp
+
+${OBJECTDIR}/LABtoRGBTransform.o: LABtoRGBTransform.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -MMD -MP -MF $@.d -o ${OBJECTDIR}/LABtoRGBTransform.o LABtoRGBTransform.cpp
 
 ${OBJECTDIR}/HSVtoRGBTransform.o: HSVtoRGBTransform.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -138,6 +151,11 @@ ${OBJECTDIR}/HSVVecEvent.o: HSVVecEvent.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -MMD -MP -MF $@.d -o ${OBJECTDIR}/HSVVecEvent.o HSVVecEvent.cpp
+
+${OBJECTDIR}/ContrastBrigthness.o: ContrastBrigthness.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -MMD -MP -MF $@.d -o ${OBJECTDIR}/ContrastBrigthness.o ContrastBrigthness.cpp
 
 ${OBJECTDIR}/RGBtoHSVTransform.o: RGBtoHSVTransform.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -246,6 +264,19 @@ ${OBJECTDIR}/HomomorphicFilterLAB_nomain.o: ${OBJECTDIR}/HomomorphicFilterLAB.o 
 	    ${CP} ${OBJECTDIR}/HomomorphicFilterLAB.o ${OBJECTDIR}/HomomorphicFilterLAB_nomain.o;\
 	fi
 
+${OBJECTDIR}/SRMSegmentation_nomain.o: ${OBJECTDIR}/SRMSegmentation.o SRMSegmentation.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/SRMSegmentation.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SRMSegmentation_nomain.o SRMSegmentation.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/SRMSegmentation.o ${OBJECTDIR}/SRMSegmentation_nomain.o;\
+	fi
+
 ${OBJECTDIR}/RGBtoLABTransform_nomain.o: ${OBJECTDIR}/RGBtoLABTransform.o RGBtoLABTransform.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/RGBtoLABTransform.o`; \
@@ -272,19 +303,6 @@ ${OBJECTDIR}/MeanShift_nomain.o: ${OBJECTDIR}/MeanShift.o MeanShift.cpp
 	    ${CP} ${OBJECTDIR}/MeanShift.o ${OBJECTDIR}/MeanShift_nomain.o;\
 	fi
 
-${OBJECTDIR}/LABtoRGBTransform_nomain.o: ${OBJECTDIR}/LABtoRGBTransform.o LABtoRGBTransform.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/LABtoRGBTransform.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/LABtoRGBTransform_nomain.o LABtoRGBTransform.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/LABtoRGBTransform.o ${OBJECTDIR}/LABtoRGBTransform_nomain.o;\
-	fi
-
 ${OBJECTDIR}/homomorphic_opencv_nomain.o: ${OBJECTDIR}/homomorphic_opencv.o homomorphic_opencv.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/homomorphic_opencv.o`; \
@@ -296,6 +314,32 @@ ${OBJECTDIR}/homomorphic_opencv_nomain.o: ${OBJECTDIR}/homomorphic_opencv.o homo
 	    $(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/homomorphic_opencv_nomain.o homomorphic_opencv.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/homomorphic_opencv.o ${OBJECTDIR}/homomorphic_opencv_nomain.o;\
+	fi
+
+${OBJECTDIR}/KMeansColorReduction_nomain.o: ${OBJECTDIR}/KMeansColorReduction.o KMeansColorReduction.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/KMeansColorReduction.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/KMeansColorReduction_nomain.o KMeansColorReduction.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/KMeansColorReduction.o ${OBJECTDIR}/KMeansColorReduction_nomain.o;\
+	fi
+
+${OBJECTDIR}/LABtoRGBTransform_nomain.o: ${OBJECTDIR}/LABtoRGBTransform.o LABtoRGBTransform.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/LABtoRGBTransform.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/LABtoRGBTransform_nomain.o LABtoRGBTransform.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/LABtoRGBTransform.o ${OBJECTDIR}/LABtoRGBTransform_nomain.o;\
 	fi
 
 ${OBJECTDIR}/HSVtoRGBTransform_nomain.o: ${OBJECTDIR}/HSVtoRGBTransform.o HSVtoRGBTransform.cpp 
@@ -322,6 +366,19 @@ ${OBJECTDIR}/HSVVecEvent_nomain.o: ${OBJECTDIR}/HSVVecEvent.o HSVVecEvent.cpp
 	    $(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/HSVVecEvent_nomain.o HSVVecEvent.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/HSVVecEvent.o ${OBJECTDIR}/HSVVecEvent_nomain.o;\
+	fi
+
+${OBJECTDIR}/ContrastBrigthness_nomain.o: ${OBJECTDIR}/ContrastBrigthness.o ContrastBrigthness.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/ContrastBrigthness.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I. -I/usr/local/include/opencv -I/usr/local/include -I/home/claudio/NetBeansProjects/Sequenciables/Sequenciables -I/home/claudio/NetBeansProjects/ColorSegmentatorDiscover/MeanShiftEDISON -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/ContrastBrigthness_nomain.o ContrastBrigthness.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/ContrastBrigthness.o ${OBJECTDIR}/ContrastBrigthness_nomain.o;\
 	fi
 
 ${OBJECTDIR}/RGBtoHSVTransform_nomain.o: ${OBJECTDIR}/RGBtoHSVTransform.o RGBtoHSVTransform.cpp 

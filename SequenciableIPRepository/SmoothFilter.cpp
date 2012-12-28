@@ -3,8 +3,8 @@
 
 SmoothFilter::SmoothFilter(int _smoothtype, int sz1, int sz2, double p1, double p2) {
     processed = false;
-    input = NULL;
-    output = NULL;
+//    input = NULL;
+//    output = NULL;
     smoothType = _smoothtype;
     size1 = sz1;
     size2 = sz2;
@@ -32,10 +32,10 @@ SmoothFilter::SmoothFilter(int _smoothtype, int sz1, int sz2, double p1, double 
 
 SmoothFilter::~SmoothFilter() {
     // TODO Auto-generated destructor stub
-    if (input != NULL)
-        cvReleaseImage(&input);
-    if (output != NULL)
-        cvReleaseImage(&output);
+//    if (input != NULL)
+//        cvReleaseImage(&input);
+//    if (output != NULL)
+//        cvReleaseImage(&output);
     processed = false;
     for(int a=0;a<inputCompatibility.size();a++){
         RGBListener* r = (RGBListener*)inputCompatibility[a];
@@ -49,20 +49,21 @@ Sequenciable* SmoothFilter::getClone(){
     return new SmoothFilter(smoothType,size1, size2, param1, param2);
 }
 void SmoothFilter::processingCore() {
-    cvSmooth(input, output, smoothType, size1, size2, param1, param2);
+//    cvSmooth(input, output, smoothType, size1, size2, param1, param2);
 }
 
 void SmoothFilter::actionPerformed(Event* ev) {
     IplEvent *e = (IplEvent*) ev;
-    if (input != NULL)
-        cvReleaseImage(&input);
-    if (output != NULL)
-        cvReleaseImage(&output);
+//    if (input != NULL)
+//        cvReleaseImage(&input);
+//    if (output != NULL)
+//        cvReleaseImage(&output);
 
-    input = cvCloneImage(e->getEventIplImage());
+    IplImage *input = cvCloneImage(e->getEventIplImage());
     inputImageSet = true;
-    output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
-    processingCore();
+    IplImage *output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
+//    processingCore();
+    cvSmooth(input, output, smoothType, size1, size2, param1, param2);
     IplEvent *newEvent = new IplEvent(output);
     //notifyAll(newEvent);
     for (int a = 0; a < listeners.size(); a++) {
@@ -70,5 +71,8 @@ void SmoothFilter::actionPerformed(Event* ev) {
         listeners[a]->actionPerformed(newEvent);
     }
     delete newEvent;
+    
+    cvReleaseImage(&input);
+    cvReleaseImage(&output);
     processed = true;
 }

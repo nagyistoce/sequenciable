@@ -14,8 +14,8 @@ RGBtoHSVTransform::RGBtoHSVTransform() {
 //	setOutputType(Serializable::IPL_HSV);
 //	addInputType(Serializable::IPL_RGB);
     processed = false;
-    input = NULL;
-    output = NULL;
+//    input = NULL;
+//    output = NULL;
     inputCompatibility.push_back(new RGBListener());
     type = NULL;
     
@@ -26,10 +26,10 @@ RGBtoHSVTransform::RGBtoHSVTransform() {
 
 RGBtoHSVTransform::~RGBtoHSVTransform() {
 	// TODO Auto-generated destructor stub
-    if(input!=NULL)
-        cvReleaseImage(&input);
-    if(output!=NULL)
-        cvReleaseImage(&output);
+//    if(input!=NULL)
+//        cvReleaseImage(&input);
+//    if(output!=NULL)
+//        cvReleaseImage(&output);
     processed = false;
     for(int a=0; a< inputCompatibility.size();a++){
         RGBListener *l = (RGBListener*)inputCompatibility[a];
@@ -45,21 +45,23 @@ Sequenciable* RGBtoHSVTransform::getClone(){
     return new RGBtoHSVTransform();
 }
 void RGBtoHSVTransform::processingCore(){
-		cvCvtColor(input,output,CV_BGR2HSV);
+//		cvCvtColor(input,output,CV_BGR2HSV);
 }
 void RGBtoHSVTransform::actionPerformed(Event* ev){
     IplEvent *e = (IplEvent*) ev;
-    if (input != NULL)
-        cvReleaseImage(&input);
-    if (output != NULL)
-        cvReleaseImage(&output);
-    input = cvCloneImage(e->getEventIplImage());
-    output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
+//    if (input != NULL)
+//        cvReleaseImage(&input);
+//    if (output != NULL)
+//        cvReleaseImage(&output);
+    IplImage* input = cvCloneImage(e->getEventIplImage());
+    IplImage* output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
     cvCvtColor(input, output, CV_BGR2HSV);
+    IplEvent *resultEvent = new IplEvent(output);
     for (int a = 0; a < listeners.size(); a++) {
-        IplEvent *resultEvent = new IplEvent(output);
         listeners[a]->actionPerformed(resultEvent);
-        delete resultEvent;
     }
+    delete resultEvent;
+    cvReleaseImage(&input);
+    cvReleaseImage(&output);
     processed = true;
 }

@@ -16,8 +16,8 @@ HomomorphicFilterHSV::HomomorphicFilterHSV(int _filterOrder, int _cutFrequency, 
     gain = _gain;
     filterType = _filterType;
     processed = false;
-    input=NULL;
-    output=NULL;
+//    input=NULL;
+//    output=NULL;
     type=NULL;
     inputCompatibility.push_back(new HSVListener());
     
@@ -36,10 +36,10 @@ HomomorphicFilterHSV::HomomorphicFilterHSV(int _filterOrder, int _cutFrequency, 
 
 HomomorphicFilterHSV::~HomomorphicFilterHSV() {
     // TODO Auto-generated destructor stub
-    if(input!=NULL)
-        cvReleaseImage(&input);
-    if(output!=NULL)
-        cvReleaseImage(&output);
+//    if(input!=NULL)
+//        cvReleaseImage(&input);
+//    if(output!=NULL)
+//        cvReleaseImage(&output);
     processed = false;
     for(int a=0;a<inputCompatibility.size();a++){
         HSVListener* h = (HSVListener*)inputCompatibility[a];
@@ -52,7 +52,7 @@ Sequenciable* HomomorphicFilterHSV::getClone(){
     return new HomomorphicFilterHSV(this->filterOrder,cutFrequency,gain,filterType);
 }
 
-void HomomorphicFilterHSV::processingCore() {
+void HomomorphicFilterHSV::processingCore(IplImage *input, IplImage* output) {
     cvCopy(input, output);
 
     IplImage *inputA = cvCreateImage(cvGetSize(output), IPL_DEPTH_8U, 1);
@@ -68,17 +68,20 @@ void HomomorphicFilterHSV::processingCore() {
 
 void HomomorphicFilterHSV::actionPerformed(Event* ev) {
     IplEvent *e = (IplEvent*) ev;
-    if(input!=NULL)
-        cvReleaseImage(&input);
-    input = cvCloneImage(e->getEventIplImage());
-    if(output!=NULL)
-        cvReleaseImage(&output);
-    output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
-    processingCore();
+//    if(input!=NULL)
+//        cvReleaseImage(&input);
+    IplImage *input = cvCloneImage(e->getEventIplImage());
+//    if(output!=NULL)
+//        cvReleaseImage(&output);
+    IplImage* output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
+    processingCore(input,output);
+    IplEvent *resultEvent = new IplEvent(output);
     for (int a = 0; a < listeners.size(); a++) {
-        IplEvent *resultEvent = new IplEvent(output);
         listeners[a]->actionPerformed(resultEvent);
-        delete resultEvent;
     }
+
+    cvReleaseImage(&input);
+    cvReleaseImage(&output);
+    delete resultEvent;
     processed = true;
 }

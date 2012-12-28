@@ -1,12 +1,12 @@
 /*
- * SmoothFilter.h
+ * Brightness.h
  *
  *  Created on: Jun 16, 2011
  *      Author: claudio
  */
 
-#ifndef SMOOTHFILTER_H_
-#define SMOOTHFILTER_H_
+#ifndef CONBRI_H_
+#define CONBRI_H_
 
 #include <IncompatibleClassesException.h>
 #include <ShortCircuitException.h>
@@ -16,10 +16,10 @@
 #include <cv.h>
 #include <Sequenciable.h>
 
-class SmoothFilter: public RGBListener, public Sequenciable {
+class ContrastBrightness: public RGBListener, public Sequenciable {
 public:
-	SmoothFilter(int type = CV_GAUSSIAN, int sz1 = 3, int sz2 = 0, double p1 =0, double p2=0);
-	virtual ~SmoothFilter();
+	ContrastBrightness(double contrast=1.0, double brightness=0.0);
+	virtual ~ContrastBrightness();
 	virtual bool addSequenciableListener(Sequenciable *_rgblis){
 		if(_rgblis==this)
 			throw new ShortCircuitException();
@@ -34,10 +34,11 @@ public:
         virtual Sequenciable* getClone();
 
     virtual Type* getType() {
-        if(type==NULL){
-            type = new RGBListener();
-        }
-        return type;
+//        if(type==NULL){
+//            type = new RGBListener();
+//        }
+//        return type;
+        return this;
     };
               virtual void actionPerformed(Event *e);
 	//virtual void actionPerformed(IplEvent* e);
@@ -51,16 +52,13 @@ public:
                   return dynamic_cast<RGBListener*>(lis);
               };
 protected:
-    int smoothType;
-    int size1,size2;
-    double param1,param2;
+    double alpha, beta;
     bool inputImageSet, processed;
-//    IplImage *input, *output;
+    IplImage *input, *output;
 
-private:
-	virtual void processingCore();
+
 
 //	IplImage *input,*output;
 };
 
-#endif /* SMOOTHFILTER_H_ */
+#endif 

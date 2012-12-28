@@ -21,7 +21,7 @@ public:
     virtual ~HomomorphicFilterHSV();
     virtual Sequenciable* getClone();
     virtual void actionPerformed(Event* e);
-    virtual void processingCore();
+    virtual void processingCore(IplImage *input, IplImage* output);
 
     virtual bool verifyOutputCompatibility(Type *lis) {
         return dynamic_cast<HSVListener*> (lis);
@@ -50,7 +50,7 @@ public:
 //            return false;
     };
 private:
-    IplImage *input, *output;
+//    IplImage *input, *output;
     bool processed;
 };
 

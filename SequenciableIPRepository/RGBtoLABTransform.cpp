@@ -10,8 +10,8 @@
 #include "RGBtoLABTransform.h"
 
 RGBtoLABTransform::RGBtoLABTransform() {
-    input = NULL;
-    output = NULL;
+//    input = NULL;
+//    output = NULL;
     processed = false;
     inputCompatibility.push_back(new RGBListener());
     type = NULL;
@@ -22,10 +22,10 @@ RGBtoLABTransform::RGBtoLABTransform() {
 
 RGBtoLABTransform::~RGBtoLABTransform() {
     // TODO Auto-generated destructor stub
-    if (input != NULL)
-        cvReleaseImage(&input);
-    if (output!=NULL)
-        cvReleaseImage(&output);
+//    if (input != NULL)
+//        cvReleaseImage(&input);
+//    if (output!=NULL)
+//        cvReleaseImage(&output);
     processed = false;
     for(int a=0; a< inputCompatibility.size();a++){
         RGBListener *l = (RGBListener*)inputCompatibility[a];
@@ -43,17 +43,20 @@ Sequenciable* RGBtoLABTransform::getClone(){
 }
 void RGBtoLABTransform::actionPerformed(Event* ev) {
     IplEvent *e = (IplEvent*) ev;
-    if(input!=NULL)
-        cvReleaseImage(&input);
-    input = cvCloneImage(e->getEventIplImage());
-    if(output!=NULL)
-        cvReleaseImage(&output);
-    output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
+//    if(input!=NULL)
+//        cvReleaseImage(&input);
+    IplImage* input = cvCloneImage(e->getEventIplImage());
+//    if(output!=NULL)
+//        cvReleaseImage(&output);
+    IplImage* output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
     cvCvtColor(input, output, CV_BGR2Lab);
-    for (int a = 0; a < listeners.size(); a++) {
         IplEvent *resultEvent = new IplEvent(output);
+    for (int a = 0; a < listeners.size(); a++) {
         listeners[a]->actionPerformed(resultEvent);
-        delete resultEvent;
+
     }
+    delete resultEvent;
+    cvReleaseImage(&input);
+    cvReleaseImage(&output);
     processed = true;
 }
