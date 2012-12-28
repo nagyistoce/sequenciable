@@ -73,7 +73,7 @@ public:
                     return false;
 	};
                 private:
-            IplImage *input,*output;
+//            IplImage *input,*output;
             bool processed;
 };
 

@@ -8,8 +8,8 @@
 #include "MeanShift.h"
 
 MeanShiftProcessor::MeanShiftProcessor(int _sigmaS, float _sigmaR, int _minRegions) {
-    input = NULL;
-    output = NULL;
+//    input = NULL;
+//    output = NULL;
     sigmaS = _sigmaS;
     sigmaR = _sigmaR;
     minRegions = _minRegions;
@@ -32,10 +32,10 @@ MeanShiftProcessor::MeanShiftProcessor(int _sigmaS, float _sigmaR, int _minRegio
 }
 
 MeanShiftProcessor::~MeanShiftProcessor() {
-    if (input != NULL)
-        cvReleaseImage(&input);
-    if (output != NULL)
-        cvReleaseImage(&output);
+//    if (input != NULL)
+//        cvReleaseImage(&input);
+//    if (output != NULL)
+//        cvReleaseImage(&output);
     processed = false;
     for(int a=0; a< inputCompatibility.size();a++){
         RGBListener *l = (RGBListener*)inputCompatibility[a];
@@ -54,14 +54,10 @@ Sequenciable* MeanShiftProcessor::getClone(){
 }
 void MeanShiftProcessor::actionPerformed(Event* ev) {
     IplEvent *e = (IplEvent*) ev;
-    if (input != NULL)
-        cvReleaseImage(&input);
-    if (output != NULL)
-        cvReleaseImage(&output);
 
-    input = cvCloneImage(e->getEventIplImage());
+    IplImage *input = cvCloneImage(e->getEventIplImage());
     inputImageSet = true;
-    output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
+    IplImage *output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
     
     msp->doMeanShiftEDISON(input,output);
     
@@ -72,5 +68,8 @@ void MeanShiftProcessor::actionPerformed(Event* ev) {
         listeners[a]->actionPerformed(newEvent);
     }
     delete newEvent;
+    cvReleaseImage(&input);
+    cvReleaseImage(&output);
+
     processed = true;
 }

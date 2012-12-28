@@ -8,12 +8,11 @@
 #include "IplEvent.h"
 
 IplEvent::IplEvent(IplImage *img) : Event(Event::PROCESSING_FINISHED_CORRECTLY) {
-	// TODO Auto-generated constructor stub
-	eventImage = img;
+    eventImage = cvCloneImage(img);
 }
 
 IplEvent::~IplEvent() {
-	// TODO Auto-generated destructor stub
+    cvReleaseImage(&eventImage);
 }
 IplImage* IplEvent::getEventIplImage(){
 	return eventImage;

@@ -21,7 +21,7 @@ public:
     virtual ~HomomorphicFilterLAB();
     Sequenciable* getClone();
     virtual void actionPerformed(Event* e);
-    virtual void processingCore();
+    void processingCore(IplImage *,IplImage* );
 
     virtual bool verifyOutputCompatibility(Type *lis) {
         return dynamic_cast<LABListener*> (lis);
@@ -46,7 +46,7 @@ public:
             return false;
     };
 private:
-    IplImage *input, *output;
+//    IplImage *input, *output;
     bool processed;
 };
 

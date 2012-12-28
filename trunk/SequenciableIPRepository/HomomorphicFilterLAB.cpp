@@ -15,8 +15,8 @@ HomomorphicFilterLAB::HomomorphicFilterLAB(int _filterOrder, int _cutFrequency, 
     gain = _gain;
     filterType = _filterType;
     processed = false;
-    input = NULL;
-    output = NULL;
+//    input = NULL;
+//    output = NULL;
     inputCompatibility.push_back(new LABListener());
     
     SEQUENCIABLE_ID = 3;
@@ -33,10 +33,10 @@ HomomorphicFilterLAB::HomomorphicFilterLAB(int _filterOrder, int _cutFrequency, 
 
 HomomorphicFilterLAB::~HomomorphicFilterLAB() {
     // TODO Auto-generated destructor stub
-    if(input!=NULL)
-        cvReleaseImage(&input);
-    if(output!=NULL)
-        cvReleaseImage(&output);
+//    if(input!=NULL)
+//        cvReleaseImage(&input);
+//    if(output!=NULL)
+//        cvReleaseImage(&output);
 
     processed = false;
     for(int a=0; a< inputCompatibility.size();a++){
@@ -48,7 +48,7 @@ HomomorphicFilterLAB::~HomomorphicFilterLAB() {
 Sequenciable* HomomorphicFilterLAB::getClone(){
     return new HomomorphicFilterLAB(filterOrder,cutFrequency,gain,filterType);
 }
-void HomomorphicFilterLAB::processingCore() {
+void HomomorphicFilterLAB::processingCore(IplImage* input, IplImage* output) {
     cvCopy(input, output);
 
     IplImage *inputA = cvCreateImage(cvGetSize(output), IPL_DEPTH_8U, 1);
@@ -64,18 +64,18 @@ void HomomorphicFilterLAB::processingCore() {
 
 void HomomorphicFilterLAB::actionPerformed(Event* ev) {
     IplEvent *e = (IplEvent*) ev;
-    if(input!=NULL)
-        cvReleaseImage(&input);
-    if(output!=NULL)
-        cvReleaseImage(&output);
 
-    input = cvCloneImage(e->getEventIplImage());
-    output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
-    processingCore();
+    IplImage *input = cvCloneImage(e->getEventIplImage());
+    IplImage *output = cvCreateImage(cvGetSize(input), input->depth, input->nChannels);
+    processingCore(input,output);
+    IplEvent *resultEvent = new IplEvent(output);
     for (int a = 0; a < listeners.size(); a++) {
-        IplEvent *resultEvent = new IplEvent(output);
         listeners[a]->actionPerformed(resultEvent);
-        delete resultEvent;
     }
+    delete resultEvent;
+
+    cvReleaseImage(&input);
+    cvReleaseImage(&output);
+
     processed = true;
 }

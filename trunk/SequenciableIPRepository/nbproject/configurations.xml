@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>ContrastBrightness.h</itemPath>
       <itemPath>HSVColor.h</itemPath>
       <itemPath>HSVListener.h</itemPath>
       <itemPath>/home/claudio/NetBeansProjects/Sequenciables/SequenciableIPRepository/HSVRGBTransformation.h</itemPath>
@@ -36,9 +37,16 @@
         <itemPath>homomorphic_opencv.cpp</itemPath>
         <itemPath>homomorphic_opencv.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f4" displayName="Processing" projectFiles="true">
+        <itemPath>ContrastBrigthness.cpp</itemPath>
+        <itemPath>KMeansColorReduction.cpp</itemPath>
+        <itemPath>/home/claudio/NetBeansProjects/Sequenciables/SequenciableIPRepository/KMeansColorReduction.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f3" displayName="Segmentation" projectFiles="true">
         <itemPath>MeanShift.cpp</itemPath>
         <itemPath>MeanShift.h</itemPath>
+        <itemPath>SRMSegmentation.cpp</itemPath>
+        <itemPath>SRMSegmentation.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="Transformations" projectFiles="true">
         <itemPath>HSV2HSVVec.cpp</itemPath>

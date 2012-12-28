@@ -16,7 +16,7 @@ class HomomorphicFilter {
 public:
 	HomomorphicFilter(int filterOrder=1, int cutFrequency=100,int gain=1,int filterType=-1);
 	virtual ~HomomorphicFilter();
-	virtual void processingCore()=0;
+//	virtual void processingCore()=0;
 //	virtual int process();
 protected:
 	IplImage *homomorphicFilterProcess(IplImage *toProcess);

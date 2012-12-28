@@ -47,7 +47,7 @@ private:
     float sigmaR;
     int minRegions;
     bool inputImageSet, processed;
-    IplImage *input, *output;
+//    IplImage *input, *output;
     MSPerformer *msp;
 };
 
